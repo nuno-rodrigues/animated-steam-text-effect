@@ -1,0 +1,41 @@
+$elements: 11;
+
+* {
+	color: tomato;
+}
+
+.blur {
+	& > * {
+		opacity: 0;
+		animation: animateBlur 3s forwards;
+	}
+	li {
+		@for $i from 0 to $elements {
+			&:nth-child(#{$i + 1}) {
+				animation-delay: #{$i * 1s};
+			}
+		}
+	}
+	ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		a {
+			color: lime;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+@keyframes animateBlur {
+    from {
+			opacity: 1;
+			text-shadow: 0 0 1em rgba(0,0,0,.5);
+		}
+    to {
+			opacity: 1;
+			text-shadow: 0 0 0px rgba(0,0,0,0);
+		}
+}
